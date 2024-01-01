@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 21
+        var x = "Dhananjay"
+
+        //object
+        var emp = {eid: 185, ename:"Dhananjay", dept:"IT"}
+        console.log(emp.eid,emp.ename,emp.dept)
+        alert(emp.eid + " : " + emp.ename+ " : " +emp.dept)
+        emp.mobile = 9130584892
+
+        emp1 = {id: 1 , name: "Radha", dept: "ux" ,display: function(){
+            console.log("Id: " + this.id, " Name: " + this.name + " Department: " + this.dept)
+        }}
+
+        //document.write(emp1.display())
+        const Employee = function(id,nm,dept){
+            this.id=id
+            this.name=nm
+            this.dept = dept
+            this.display = function(){
+                document.write("Id: " + this.id + " Name: " + this.name + " Department: " + this.dept + "<br>")
+            }
+        }
+
+        e1 = new Employee(10,'xxxxx','HR')
+        e1.email = 'dsp@gmail.com'
+        e1.display()
+
+        e2 = new Employee(14,'Smitesh',"IT")
+        e2.display()
+
+        for(var p in e1){
+            console.log(p+"-->"+e1[p])
+        }
+    </script>
+</body>
+</html>
