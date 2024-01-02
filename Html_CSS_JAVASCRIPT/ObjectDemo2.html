@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var person = function(id,name,mobile){
+            this.id = id
+            this.name = name
+            this.mobile = mobile
+        }
+
+        var employee = function(dept,desg){
+            this.dept = dept
+            this.desg = desg
+        }
+
+        var p1 = new person(12,'Dhananjay',9130584892)
+        var e1 = new employee('IT','Manager')
+
+        document.write(p1.id, "  ", p1.name, " ", p1.mobile)
+        e1.__proto__=p1
+
+        for(var e in e1){
+            if(e1.hasOwnProperty(e)){
+                console.log("Own Property:  " +e+ "-->" + e1[e])
+            }
+            else{
+                console.log("Parent Property: " +e+ "-->" + e1[e])
+            }
+        }
+    </script>
+</body>
+</html>
