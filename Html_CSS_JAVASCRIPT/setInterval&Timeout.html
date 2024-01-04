@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div id="mydiv"></div>
+    <script>
+        function f2(){
+            console.log("in fun2")
+            var dt = new Date()
+            document.getElementById("mydiv").innerHTML=dt
+        }
+
+        function f1(){
+            console.log("in F1")
+        }
+
+        function f3(){
+            clearInterval(s1)
+        }
+
+        function f4(){
+            alert("Hi Alerting")
+        }
+
+        console.log("Before f1()")
+        setTimeout(f1,1000)
+        console.log("After f1()")
+        var s1=setInterval(f4,1000);
+        var s2=setTimeout(f3,3010);
+    </script>
+</body>
+</html>
