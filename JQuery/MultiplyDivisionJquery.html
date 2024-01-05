@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+
+    <h2>Simple Calculator</h2>
+
+    <label for="num1">Enter number 1: </label>
+    <input type="text" id="num1"><br>
+
+    <label for="num2">Enter number 2: </label>
+    <input type="text" id="num2"><br>
+
+    <button id="multiply">Multiply</button>
+    <button id="divide">Divide</button>
+
+    <p>The Result is: <span id="result"></span></p>
+
+    <script>
+        $(document).ready(function () {
+            $("#multiply").click(function () {
+                calculate("multiply");
+            });
+
+            $("#divide").click(function () {
+                calculate("divide");
+            });
+
+            function calculate(operation) {
+                var num1 = parseFloat($("#num1").val());
+                var num2 = parseFloat($("#num2").val());
+                var result;
+
+                if (isNaN(num1) || isNaN(num2)) {
+                    alert("Please enter valid numbers.");
+                    return;
+                }
+
+                if (operation === "multiply") {
+                    result = num1 * num2;
+                } else if (operation === "divide") {
+                    if (num2 !== 0) {
+                        result = num1 / num2;
+                    } else {
+                        alert("Cannot divide by zero.");
+                        return;
+                    }
+                }
+
+                $("#result").text(result);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
