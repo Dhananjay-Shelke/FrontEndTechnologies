@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+    <script>
+        function factorial(x){
+            var f=1
+            for(var i=1;i<=x;i++){
+                f=f*i;
+            }
+            return f;
+        }
+
+        $(document).ready(function(){
+            $('#add').click(function(){
+                var x=parseInt($('#num1').val())
+                var y=parseInt($('#num2').val())
+
+                $('#result').val(x+y)
+                $('#mydiv').html(x+y)
+            })
+
+            $('#factorial').click(function(){
+                var x=parseInt($('#num1').val())
+                var ans = factorial(x)
+
+                $('#result').val(ans)
+                $('#mydiv').html(ans)
+            })
+        })
+    </script>
+</head>
+<body>
+    <form>
+        <label for="num1">Number 1: </label>
+        <input type="number" id="num1" name="num1"><br>
+        <label for="num2">Number 2</label>
+        <input type="number" id="num2" class="num2"><br>
+        <label for="result">Result: </label>
+        <input type="number" name="result" id="result" readonly><br>
+        <button type="button" name="btn" id="add" value="add">Add</button>
+        <button type="button" name="btn" id="factorial" value="factorial">Factorial</button>
+        <button type="reset" name="btn" id="cancel" value="cancel">Cancel</button>
+    </form>
+
+    <div class="mydiv"></div>
+    <p id="answer">Display answer here</p>
+</body>
+</html>
