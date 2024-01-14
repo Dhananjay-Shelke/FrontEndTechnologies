@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Events</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        function displaylist(searcharr){
+            str = "<ul>";
+            for(var n of searcharr){
+                str+=`<li>${n}</li>`
+            }
+            str+="</ul>"
+            $("#mydiv").html(str)
+        }
+
+        $(document).ready(function(){
+            names = ['Rahul','Rashmi','hghfh','gysfgy']
+            searcharr=[...names]
+            displaylist(searcharr)
+            $('#search').keyup(function(e){
+                console.log(e)
+
+                console.log(e.key+","+e.which+","+e.target.value)
+
+                var searchtxt = $("#search").val()
+                if(searchtxt===""){
+                    searcharr=[...names]
+                }
+                else{
+                   searcharr = names.filter(nm=>nm.includes(searchtxt)) 
+                }
+
+                displaylist(searcharr)
+            })
+        })
+
+
+    </script>
+</head>
+<body>
+    Search Text: <input type="text" name="search" id="search">
+    <div id="mydiv"></div>
+</body>
+</html>
