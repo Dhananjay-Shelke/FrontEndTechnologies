@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show/Height/Toggle</title>
+
+    <style>
+        div{
+            background-color: cyan;
+            width: 200px;
+            height:200px;
+            border: 2px solid red;
+            border-radius: 6px;
+            margin:5px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#show').click(function(){
+                $('#div1').show(2000,function(){
+                    $('#div3').html("show Complete")
+                })
+            })
+
+            $('#hide').click(function(){
+                $('#div1').hide(2000,function(){
+                    $('#div3').html("show complete")
+                }); 
+                $('#div2').show(2000,function(){
+                    $('#div3').html("hide complete")
+                });
+            })
+            $('#toggle').click(function(){
+                $('#div1').toggle(2000,function(){
+                    $('#div3').html("show complete")
+                }); 
+                $('#div2').toggle(2000,function(){
+                    $('#div3').html("hide complete")
+                });
+            })
+        })
+    </script>
+</head>
+<body>
+    <div id="div3"></div>
+    <button type="button" id="show">Show</button>
+    <button type="button" id="hide">Hide</button>
+    <button type="button" id="toggle">Toggle</button>
+
+    <div id="div1">
+        <img src="Profile_Photo.jpg" width="200" height="200">
+    </div>
+    <div id="div2">
+        This id Div2
+    </div>
+</body>
+</html>
