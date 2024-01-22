@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <style>
+        body {
+            margin: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function multiplyBy() {
+            num1 = document.getElementById("fn").value;
+            num2 = document.getElementById("sn").value;
+            if (num1 == 0 || num2 == 0) {
+                alert("Please enter valid numbers.");
+                return;
+            }
+            document.getElementById("result").innerHTML = num1 * num2;
+        }
+
+        function divideBy() {
+            num1 = document.getElementById("fn").value;
+            num2 = document.getElementById("sn").value;
+            if (num1 == 0 || num2 == 0) {
+                alert("Please enter valid numbers.");
+                return;
+            }
+            if (num2 != 0) {
+                document.getElementById("result").innerHTML = num1 / num2;
+            }
+            else {
+                alert("Denominator Can't be Zero")
+            }
+        }
+
+    </script>
+
+    <form>
+        1st Number : <input type="text" id="fn" required /><br>
+        2nd Number : <input type="text" id="sn" required /><br>
+
+        <button type="button" onclick="multiplyBy()">Multiply</button>
+        <button type="button" onclick="divideBy()">Divide</button>
+        <!-- <button type="reset">Reset</button> -->
+    </form>
+
+    <p>The Result is :
+        <span id="result"></span>
+    </p>
+
+</body>
+
+</html>
