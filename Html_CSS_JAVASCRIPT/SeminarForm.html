@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seminar Registration Form</title>
+
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center; text-decoration:underline;">Seminar Registration Form</h1>
+
+    <form id="regForm" style="border: 2px solid ; padding: 10px; margin-right: 25%; margin-left: 25%;">
+        <label for="nm">Participant Name :
+            <select id="title">
+                <option id="tit">Title</option>
+                <option id="mr">Mr</option>
+                <option id="ms">Ms</option>
+            </select>
+            <input id="fnm" type="text" placeholder="first name" required>
+            <input id="lnm" type="text" placeholder="last name" required style="margin-bottom: 10px;"><br>
+        </label>
+
+        <label for="email">Email-ID :
+            <input id="email" type="email" placeholder="Enter email here" required style="margin-bottom: 10px;">
+            <br>
+        </label>
+
+        <label for="cemail">Confirm Email :
+            <input id="cemail" type="email" placeholder="Re-enter email here" required style="margin-bottom: 10px;">
+            <span id="confirmEmailError" class="error"></span><br>
+        </label>
+
+        <label for="seminar">Seminars :
+            <select id="seminar" name="seminar" style="margin-bottom: 10px;" required>
+                <option value="" disabled selected>Select Level</option>
+                <option id="soa" value="soa">SOA</option>
+                <option id="dp" value="dp">Design Patterns</option>
+                <option id="bi" value="bi">Business Intelligence</option>
+            </select><br>
+        </label>
+
+        <label>Level :
+            <input type="radio" id="Introductory" value="Introductory" name="level" class="level" required
+                checked="checked">
+            <label>Introductory</label>
+            <input type="radio" id="Intermediate" value="Intermediate" name="level" class="level" required>
+            <label>Intermediate</label>
+            <input type="radio" id="Advanced" value="Advanced" name="level" class="level" style="margin-bottom: 15px;"
+                required>
+            <label>Advanced</label><br>
+        </label>
+
+        <button type="button" style="margin-bottom: 10px;" onclick="return validateSeminar()">Calculate Training
+            Cost</button><br>
+        <label>Cost of Seminar :
+            <input type="text" id="cost" name="cost" style="margin-bottom: 10px;" readonly>
+        </label><br>
+
+        <button type="button" onclick="displayAllDetails()">Display Details</button>&nbsp;&nbsp;&nbsp;
+        <button type="submit" onclick="displayAllDetails()">Submit</button><br>
+        <button onclick="openWin()">Open "myWindow"</button>
+    </form>
+
+
+    <script>
+
+        function openWin() {
+            myWindow = window.open("", "", "width=200,height=100");
+            //myWindow.document.write("<p> This is 'anotherWindow'. It is 300px wide and 150px tall new window! </p>");
+            myWindow.document.write("<h1>Participants Details</h1>");
+            myWindow.document.write(participantsDetails);
+
+        }
+        function validateEmail() {
+            var email = document.getElementById("email").value;
+            var cemail = document.getElementById("cemail").value;
+
+            //reset error msg
+            confirmEmailError.innerHTML = "";
+
+            if (email !== cemail) {
+                document.getElementById("confirmEmailError").innerHTML = "Emails does not match";
+                return false;
+            }
+            return true;
+        }
+
+        function validateSeminar() {
+            var seminar = document.getElementById("seminar").value;
+            var level = document.getElementsByClassName("level");
+
+            // Seminar and Level validation
+            var seminarLevels = {
+                "soa": { "Introductory": 2500, "Intermediate": 3500, "Advanced": 6000 },
+                "dp": { "Introductory": 4000, "Intermediate": 5500, "Advanced": 8000 },
+                "bi": { "Introductory": 5000, "Intermediate": 7000, "Advanced": 10000 }
+            };
+            let selectedLevel = "";
+            // Calculate and display cost
+            for (const i of level) {
+                if (i.checked == true) {
+                    selectedLevel = i.id;
+                }
+            }
+
+            var cost = seminarLevels[seminar][selectedLevel];
+            document.getElementById("cost").value = cost;
+
+            return true;
+        }
+
+        function displayAllDetails() {
+            var participantsDetails = "";
+            var forms = document.forms;
+
+            for (var i = 0; i < forms.length; i++) {
+                var form = forms[i];
+
+                participantsDetails += "First Name: " + form.elements["fnm"].value + "\n";
+                participantsDetails += "Last Name: " + form.elements["lnm"].value + "\n";
+                participantsDetails += "Email: " + form.elements["email"].value + "\n";
+                participantsDetails += "Seminar: " + form.elements["seminar"].value + "\n";
+                participantsDetails += "Level: " + form.elements["level"].value + "\n";
+                participantsDetails += "Cost: " + form.elements["cost"].value + " Rs\n\n";
+            }
+
+            if (participantsDetails === "") {
+                alert("No participants registered yet.");
+            }
+            else {
+                alert(participantsDetails);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
