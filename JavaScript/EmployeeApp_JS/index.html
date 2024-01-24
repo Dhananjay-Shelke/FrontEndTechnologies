@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee App</title>
+    <link rel="stylesheet" href="Emp.css">
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Employee App</h1>
+        <form id="employeeForm">
+            <label for="employeeName">Employee Name:</label>
+            <input type="text" id="employeeName" name="employeeName" required minlength="5">
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+            <div>
+                <label>Gender:</label>
+                <input type="radio" id="male" name="gender" value="Male" required>
+                <label for="male">Male</label>
+
+                <input type="radio" id="female" name="gender" value="Female" required>
+                <label for="female">Female</label>
+
+                <input type="radio" id="other" name="gender" value="Other" required>
+                <label for="other">Other</label>
+            </div>
+            <div>
+                <label>Languages:</label>
+                <input type="checkbox" id="hindi" name="language" value="Hindi">
+                <label for="hindi">Hindi</label>
+
+                <input type="checkbox" id="english" name="language" value="English">
+                <label for="english">English</label>
+
+                <input type="checkbox" id="marathi" name="language" value="Marathi">
+                <label for="marathi">Marathi</label>
+            </div>
+            <button type="button" onclick="showEmployeeDetails()">Show Details</button>
+        </form>
+
+        <table id="employeeTable">
+            <thead>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Languages</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
