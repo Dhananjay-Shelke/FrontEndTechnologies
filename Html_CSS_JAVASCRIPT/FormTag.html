@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <form action="file1" method="post" onsubmit="return validate()">
+
+            <tr>
+                <td>
+                    <label for="uname">User Name</label>
+                </td>
+                <td>
+                    <input type="text" name="uname" id="uname" placeholder="Enter Name" required minlength="3" maxlength="8" autofocus/>
+                </td>
+                <td id="erruname" class="error"></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="pass">Password</label>
+                </td>
+                <td>
+                    <input type="password" placeholder="Enter Password" name="pass" id="password"
+                    required minlength="3" maxlength="8" pattern="^[A-Za-z].*">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="cpass">Confirm Password</label>
+                </td>
+                <td>
+                    <input type="password" placeholder="Enter Password" name="cpass" id="cpass" required minlength="3" maxlength="8" pattern="^[A-Za-z].*">
+                </td>
+                <td id="errpass" class="error"></td>
+            </tr>
+
+            <button type="submit" name="btn" id="btn" value="Login">Login</button>&nbsp;&nbsp;&nbsp;
+
+            <button type="reset" name="btn" id="btn1" value="clear">clear</button>
+
+        </form>
+    </table>
+</body>
+</html>
